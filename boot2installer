@@ -19,3 +19,5 @@ else
 fi
 
 unpack_boot $1
+gunzip ramdisk.gz # extract ramdisk image
+
