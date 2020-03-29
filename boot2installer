@@ -1,0 +1,12 @@
+#!/bin/bash
+function compile_ubi(){
+	gcc unpackbootimg_source/unpackbootimg.c -o unpackbootimg
+}
+
+gcc_check=$(which gcc)
+if [ -z "gcc_check" ]
+then
+	echo "Cannot find gcc in this system, exiting!"
+else
+	compile_ubi
+fi
