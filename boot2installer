@@ -10,6 +10,14 @@ function unpack_boot() {
 	rm -rf temp/
 }
 
+function create_installer() {
+	mv ramdisk installer/ramdisk-recovery.cpio
+	cd installer
+	zip -r installer.zip *
+	cp installer.zip ../
+	cd ..
+}
+
 gcc_check=$(which gcc)
 if [ -z "gcc_check" ]
 then
@@ -21,3 +29,4 @@ fi
 unpack_boot $1
 gunzip ramdisk.gz # extract ramdisk image
 
+create_installer
