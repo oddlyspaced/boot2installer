@@ -3,6 +3,13 @@ function compile_ubi(){
 	gcc unpackbootimg_source/unpackbootimg.c -o unpackbootimg
 }
 
+function unpack_boot() {
+	mkdir temp
+	./unpackbootimg -i $1 -o temp
+	mv temp/*.gz ramdisk.gz
+	rm -rf temp/
+}
+
 gcc_check=$(which gcc)
 if [ -z "gcc_check" ]
 then
@@ -10,3 +17,5 @@ then
 else
 	compile_ubi
 fi
+
+unpack_boot $1
