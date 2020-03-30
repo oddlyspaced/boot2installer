@@ -47,3 +47,5 @@ unpack_boot $1
 gunzip ramdisk.gz # extract ramdisk image
 
 create_installer
+
+echo "Installer zip created"
