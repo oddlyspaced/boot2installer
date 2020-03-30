@@ -1,4 +1,21 @@
 #!/bin/bash
+function check_dependencies(){
+	gcc_check=$(which gcc)
+	gzip_check=$(which gunzip)
+	if [ -z "$gcc_check" ]
+	then
+		echo "Cannot find gcc in this system! Exiting"
+		exit 1
+	fi
+
+	if [ -z "$gzip_check" ]
+	then
+		echo "Cannot find gunzip in this system! Exiting"
+		exit 1
+	fi
+	echo "All checks passed!"
+}
+
 function compile_ubi(){
 	gcc unpackbootimg_source/unpackbootimg.c -o unpackbootimg
 }
